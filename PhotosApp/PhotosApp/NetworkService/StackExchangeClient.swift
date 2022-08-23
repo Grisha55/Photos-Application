@@ -8,7 +8,7 @@
 import Foundation
 
 protocol StackExchangeClientProtocol: AnyObject {
-  func getPhotos(with request: PhotosRequest, page: Int, completion: @escaping (Result<String , DataResponseError>) -> Void)
+  func getPhotos(with request: PhotosRequest, page: Int, completion: @escaping (Result<ContentsModel , DataResponseError>) -> Void)
 }
 
 final class StackExchangeClient: StackExchangeClientProtocol {
@@ -22,7 +22,7 @@ final class StackExchangeClient: StackExchangeClientProtocol {
     self.session = session
   }
   
-  func getPhotos(with request: PhotosRequest, page: Int, completion: @escaping (Result<String, DataResponseError>) -> Void) {
+  func getPhotos(with request: PhotosRequest, page: Int, completion: @escaping (Result<ContentsModel, DataResponseError>) -> Void) {
     
     let urlRequest = URLRequest(url: baseURL.appendingPathComponent(request.path))
     
@@ -40,7 +40,7 @@ final class StackExchangeClient: StackExchangeClientProtocol {
         return
       }
       
-      guard let decodedResponse = try? JSONDecoder().decode(String.self, from: data) else {
+      guard let decodedResponse = try? JSONDecoder().decode(ContentsModel.self, from: data) else {
         completion(Result.failure(DataResponseError.decoding))
         return
       }
