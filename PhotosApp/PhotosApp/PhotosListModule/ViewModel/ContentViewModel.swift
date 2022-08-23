@@ -53,10 +53,10 @@ final class ContentViewModel {
       case .success(let response):
         DispatchQueue.main.async {
           self.currentPage += 1
-          self.total = response.totalPages
+          self.total = response.totalElements
           self.contents.append(contentsOf: response.content)
           
-          if response.page > 1 {
+          if response.page > 1 && response.page <= 7 {
             let indexPathsToReload = self.calculateIndexPathsToReload(from: response.content)
             self.delegate?.onFetchCompleted(with: indexPathsToReload)
           } else {
