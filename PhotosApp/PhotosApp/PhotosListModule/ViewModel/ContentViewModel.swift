@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ContentViewModelDelegate: AnyObject {
   func onFetchCompleted(with newIndexPathsToReload: [IndexPath]?)
@@ -18,6 +19,7 @@ final class ContentViewModel {
   private var contents: [PhotoModel] = []
   private var currentPage = 1
   private var total = 0
+  private let name = "Виняр Григорий Антонович"
   
   let client = StackExchangeClient()
   let request: PhotosRequest
@@ -37,6 +39,10 @@ final class ContentViewModel {
   
   func content(at index: Int) -> PhotoModel {
     return contents[index]
+  }
+  
+  func postContents(content: PhotoModel) {
+    client.postPhotos(with: request, content: content)
   }
   
   func fetchContents() {
