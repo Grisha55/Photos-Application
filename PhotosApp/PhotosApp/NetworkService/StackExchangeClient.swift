@@ -9,12 +9,12 @@ import UIKit
 
 protocol StackExchangeClientProtocol: AnyObject {
   func getPhotos(with request: PhotosRequest, page: Int, completion: @escaping (Result<ContentsModel , DataResponseError>) -> Void)
-  func postPhotos(with request: PhotosRequest, name: String, id: Int, image: UIImage)
+  func postPhotos(with request: PhotosRequest, content: PhotoModel)
 }
 
 final class StackExchangeClient: StackExchangeClientProtocol {
   private lazy var baseURL: URL = {
-    return URL(string: "https://junior.balinasoft.com//")!
+    return URL(string: "https://junior.balinasoft.com/")!
   }()
   
   let session: URLSession
@@ -23,39 +23,35 @@ final class StackExchangeClient: StackExchangeClientProtocol {
     self.session = session
   }
   
-  func postPhotos(with request: PhotosRequest, name: String, id: Int, image: UIImage) {
+  func postPhotos(with request: PhotosRequest, content: PhotoModel) {
     
     var urlRequest = URLRequest(url: baseURL.appendingPathComponent(request.pathForPost))
     
     urlRequest.httpMethod = "POST"
-    urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
     
-    let body: [String: AnyHashable] = [
-      "name"   : name,
-      "photo"  : image,
-      "typeId" : id
+    let body: [String : AnyHashable] = [
+      "name"   : content.name,
+      "photo"  : content.image ?? "",
+      "typeId" : "\(content.id)"
     ]
     
     urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
     
-    let task = session.dataTask(with: urlRequest) { data, response, error in
-      guard
-        let httpResponse = response as? HTTPURLResponse,
-        httpResponse.hasSuccessStatusCode,
-        let data = data
-      else {
+    let task = session.dataTask(with: urlRequest) { data, _, error in
+      guard let data = data, error == nil else {
         return
       }
       
       do {
         let response = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-        print("SUCCESS: \(response)")
+        print(response)
+      } catch {
+        print(error)
       }
-      catch {
-        print(error.localizedDescription)
-      }
+      
     }
-    task.resume()
+      task.resume()
   }
   
   func getPhotos(with request: PhotosRequest, page: Int, completion: @escaping (Result<ContentsModel, DataResponseError>) -> Void) {

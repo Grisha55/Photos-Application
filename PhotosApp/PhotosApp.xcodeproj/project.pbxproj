@@ -20,6 +20,7 @@
 		BE0F73F628B52C99008DD4AB /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0F73F528B52C99008DD4AB /* URLRequest.swift */; };
 		BE0F73FB28B53C61008DD4AB /* ContentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0F73FA28B53C61008DD4AB /* ContentsModel.swift */; };
 		BE0F73FE28B54B80008DD4AB /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0F73FD28B54B80008DD4AB /* ContentViewModel.swift */; };
+		BED9815B28B614CA004C7FF5 /* UIImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED9815A28B614CA004C7FF5 /* UIImage+extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		BE0F73F528B52C99008DD4AB /* URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
 		BE0F73FA28B53C61008DD4AB /* ContentsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsModel.swift; sourceTree = "<group>"; };
 		BE0F73FD28B54B80008DD4AB /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		BED9815A28B614CA004C7FF5 /* UIImage+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 		BE0F73D528B525BC008DD4AB /* PhotosApp */ = {
 			isa = PBXGroup;
 			children = (
+				BED9815928B614B1004C7FF5 /* Extensions */,
 				BE0F73F728B53BED008DD4AB /* PhotosListModule */,
 				BE0F73EA28B52822008DD4AB /* NetworkService */,
 				BE0F73D628B525BC008DD4AB /* AppDelegate.swift */,
@@ -126,6 +129,14 @@
 				BE0F73FD28B54B80008DD4AB /* ContentViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BED9815928B614B1004C7FF5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BED9815A28B614CA004C7FF5 /* UIImage+extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +212,7 @@
 				BE0F73DB28B525BC008DD4AB /* ListOfContentVC.swift in Sources */,
 				BE0F73FB28B53C61008DD4AB /* ContentsModel.swift in Sources */,
 				BE0F73EC28B528FB008DD4AB /* DataResponseError.swift in Sources */,
+				BED9815B28B614CA004C7FF5 /* UIImage+extension.swift in Sources */,
 				BE0F73F028B52992008DD4AB /* PhotosRequest.swift in Sources */,
 				BE0F73EE28B5294F008DD4AB /* HTTPURLResponse.swift in Sources */,
 				BE0F73F428B52A69008DD4AB /* StackExchangeClient.swift in Sources */,

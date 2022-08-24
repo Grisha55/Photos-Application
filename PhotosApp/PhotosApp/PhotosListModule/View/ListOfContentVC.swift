@@ -120,13 +120,21 @@ extension ListOfContentVC: UIImagePickerControllerDelegate, UINavigationControll
     
     picker.dismiss(animated: true, completion: nil)
     
-    guard info[UIImagePickerController.InfoKey.originalImage] is UIImage else {
+    guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
       return
     }
     
-    // TODO: - Отправить POST запрос
+    guard
+      let tappedElement = tappedElement,
+      let pngString = image.toPngString()
+    else { return }
     
+    let photoModel = PhotoModel(id: tappedElement.id, name: "Виняр Григорий Антонович", image: pngString)
     
+    DispatchQueue.global().async { [weak self] in
+      guard let self = self else { return }
+      self.contentViewModel.postContents(content: photoModel)
+    }
   }
   
 }
