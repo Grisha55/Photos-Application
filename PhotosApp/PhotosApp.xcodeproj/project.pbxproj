@@ -20,6 +20,7 @@
 		BE0F73F628B52C99008DD4AB /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0F73F528B52C99008DD4AB /* URLRequest.swift */; };
 		BE0F73FB28B53C61008DD4AB /* ContentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0F73FA28B53C61008DD4AB /* ContentsModel.swift */; };
 		BE0F73FE28B54B80008DD4AB /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0F73FD28B54B80008DD4AB /* ContentViewModel.swift */; };
+		BED9815728B5F54D004C7FF5 /* TakePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED9815628B5F54D004C7FF5 /* TakePhotoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		BE0F73F528B52C99008DD4AB /* URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
 		BE0F73FA28B53C61008DD4AB /* ContentsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsModel.swift; sourceTree = "<group>"; };
 		BE0F73FD28B54B80008DD4AB /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		BED9815628B5F54D004C7FF5 /* TakePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				BE0F73DA28B525BC008DD4AB /* ListOfContentVC.swift */,
+				BED9815628B5F54D004C7FF5 /* TakePhotoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 				BE0F73FB28B53C61008DD4AB /* ContentsModel.swift in Sources */,
 				BE0F73EC28B528FB008DD4AB /* DataResponseError.swift in Sources */,
 				BE0F73F028B52992008DD4AB /* PhotosRequest.swift in Sources */,
+				BED9815728B5F54D004C7FF5 /* TakePhotoView.swift in Sources */,
 				BE0F73EE28B5294F008DD4AB /* HTTPURLResponse.swift in Sources */,
 				BE0F73F428B52A69008DD4AB /* StackExchangeClient.swift in Sources */,
 				BE0F73F228B52A39008DD4AB /* Result.swift in Sources */,
