@@ -21,7 +21,7 @@ final class ContentViewModel {
   private var total = 0
   private let name = "Виняр Григорий Антонович"
   
-  let client = StackExchangeClient()
+  var client: StackExchangeClientProtocol!
   let request: PhotosRequest
   
   init(request: PhotosRequest, delegate: ContentViewModelDelegate) {

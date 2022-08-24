@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE0EF80528B67F2100C696D5 /* AssemblyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0EF80428B67F2100C696D5 /* AssemblyBuilder.swift */; };
 		BE0F73D728B525BC008DD4AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0F73D628B525BC008DD4AB /* AppDelegate.swift */; };
 		BE0F73D928B525BC008DD4AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0F73D828B525BC008DD4AB /* SceneDelegate.swift */; };
 		BE0F73DB28B525BC008DD4AB /* ListOfContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0F73DA28B525BC008DD4AB /* ListOfContentVC.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BE0EF80428B67F2100C696D5 /* AssemblyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyBuilder.swift; sourceTree = "<group>"; };
 		BE0F73D328B525BC008DD4AB /* PhotosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE0F73D628B525BC008DD4AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE0F73D828B525BC008DD4AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE0EF80328B67F1000C696D5 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				BE0EF80428B67F2100C696D5 /* AssemblyBuilder.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
 		BE0F73CA28B525BC008DD4AB = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +82,7 @@
 		BE0F73D528B525BC008DD4AB /* PhotosApp */ = {
 			isa = PBXGroup;
 			children = (
+				BE0EF80328B67F1000C696D5 /* Assembly */,
 				BED9815928B614B1004C7FF5 /* Extensions */,
 				BE0F73F728B53BED008DD4AB /* PhotosListModule */,
 				BE0F73EA28B52822008DD4AB /* NetworkService */,
@@ -210,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE0F73DB28B525BC008DD4AB /* ListOfContentVC.swift in Sources */,
+				BE0EF80528B67F2100C696D5 /* AssemblyBuilder.swift in Sources */,
 				BE0F73FB28B53C61008DD4AB /* ContentsModel.swift in Sources */,
 				BE0F73EC28B528FB008DD4AB /* DataResponseError.swift in Sources */,
 				BED9815B28B614CA004C7FF5 /* UIImage+extension.swift in Sources */,
