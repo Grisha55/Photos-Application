@@ -23,9 +23,7 @@ class ListOfContentVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    view.backgroundColor = .yellow
-    let request = PhotosRequest.from()
-    contentViewModel = ContentViewModel(request: request, delegate: self)
+    view.backgroundColor = .white
     
     setupNavigationBar()
     setupContentTableView()
