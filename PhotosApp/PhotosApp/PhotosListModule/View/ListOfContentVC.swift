@@ -12,6 +12,8 @@ class ListOfContentVC: UIViewController {
   // MARK: - Properties
   var contentViewModel: ContentViewModel!
   
+  private var tappedElement: PhotoModel?
+  
   private let contentTableView: UITableView = {
     let table = UITableView()
     table.showsVerticalScrollIndicator = false
@@ -80,7 +82,14 @@ extension ListOfContentVC: ContentViewModelDelegate {
 
 // MARK: - UITableViewDelegate
 extension ListOfContentVC: UITableViewDelegate {
-  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: false)
+    let picker = UIImagePickerController()
+    picker.sourceType = .camera
+    picker.delegate = self
+    self.tappedElement = contentViewModel.content(at: indexPath.row)
+    self.present(picker, animated: true, completion: nil)
+  }
 }
 
 // MARK: - UITableViewDataSource
@@ -98,6 +107,28 @@ extension ListOfContentVC: UITableViewDataSource {
     }
     return cell
   }
+}
+
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+extension ListOfContentVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+  
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    picker.dismiss(animated: true, completion: nil)
+  }
+  
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    
+    picker.dismiss(animated: true, completion: nil)
+    
+    guard info[UIImagePickerController.InfoKey.originalImage] is UIImage else {
+      return
+    }
+    
+    // TODO: - Отправить POST запрос
+    
+    
+  }
+  
 }
 
 private extension ListOfContentVC {
