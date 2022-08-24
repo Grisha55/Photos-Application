@@ -8,8 +8,12 @@
 import Foundation
 
 struct PhotosRequest {
-  var path: String {
+  var pathForGet: String {
     return "api/v2/photo/type"
+  }
+  
+  var pathForPost: String {
+    return "api/v2/photo"
   }
   
   let parameters: Parameters

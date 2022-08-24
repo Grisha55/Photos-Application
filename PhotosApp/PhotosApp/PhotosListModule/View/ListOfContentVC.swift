@@ -12,6 +12,8 @@ class ListOfContentVC: UIViewController {
   // MARK: - Properties
   var contentViewModel: ContentViewModel!
   
+  private var tappedElement: PhotoModel?
+  
   private let contentTableView: UITableView = {
     let table = UITableView()
     table.showsVerticalScrollIndicator = false
@@ -21,9 +23,7 @@ class ListOfContentVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    view.backgroundColor = .yellow
-    let request = PhotosRequest.from()
-    contentViewModel = ContentViewModel(request: request, delegate: self)
+    view.backgroundColor = .white
     
     setupNavigationBar()
     setupContentTableView()
@@ -80,7 +80,14 @@ extension ListOfContentVC: ContentViewModelDelegate {
 
 // MARK: - UITableViewDelegate
 extension ListOfContentVC: UITableViewDelegate {
-  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: false)
+    let picker = UIImagePickerController()
+    picker.sourceType = .camera
+    picker.delegate = self
+    self.tappedElement = contentViewModel.content(at: indexPath.row)
+    self.present(picker, animated: true, completion: nil)
+  }
 }
 
 // MARK: - UITableViewDataSource
@@ -98,6 +105,36 @@ extension ListOfContentVC: UITableViewDataSource {
     }
     return cell
   }
+}
+
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+extension ListOfContentVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+  
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    picker.dismiss(animated: true, completion: nil)
+  }
+  
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    
+    picker.dismiss(animated: true, completion: nil)
+    
+    guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+      return
+    }
+    
+    guard
+      let tappedElement = tappedElement,
+      let pngString = image.toPngString()
+    else { return }
+    
+    let photoModel = PhotoModel(id: tappedElement.id, name: "Виняр Григорий Антонович", image: pngString)
+    
+    DispatchQueue.global().async { [weak self] in
+      guard let self = self else { return }
+      self.contentViewModel.postContents(content: photoModel)
+    }
+  }
+  
 }
 
 private extension ListOfContentVC {
